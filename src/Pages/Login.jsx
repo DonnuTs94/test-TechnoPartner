@@ -36,7 +36,6 @@ const Login = () => {
           position: "bottom",
         })
       }
-      console.log(err)
     }
   }
 
@@ -78,6 +77,7 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
               borderRadius={5}
               onKeyPress={handleKeyPress}
+              type="password"
             />
             <Button
               mt="7"

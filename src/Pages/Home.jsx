@@ -1,4 +1,4 @@
-import { Box, Image, Text } from "@chakra-ui/react"
+import { Box, Image, Text, useDisclosure } from "@chakra-ui/react"
 import HomeLogo from "../components/HomeLogo"
 import { axiosInstance } from "../API/api"
 import { useEffect, useState } from "react"
@@ -7,9 +7,11 @@ import { convertPriceWithCommas } from "../helper/formatter"
 import { Carousel } from "react-responsive-carousel"
 import "react-responsive-carousel/lib/styles/carousel.min.css"
 import { ChevronRightIcon } from "@chakra-ui/icons"
+import ModalQr from "../components/ModalQr"
 
 const Home = () => {
   const [homeData, setHomeData] = useState([])
+  const { isOpen, onOpen, onClose } = useDisclosure()
 
   const getHomeData = async () => {
     try {
@@ -21,22 +23,20 @@ const Home = () => {
     }
   }
 
-  console.log(homeData)
-
   useEffect(() => {
     getHomeData()
   }, [])
 
   return (
     <>
-      <HomeLogo />
       <Box
         maxW="480px"
         margin="auto"
         alignItems="center"
         bgColor="#F8F9FB"
-        minH="100vh"
+        minH="fit-content"
       >
+        <HomeLogo />
         <Box
           backgroundImage={`url(${motif})`}
           backgroundSize="cover"
@@ -58,7 +58,13 @@ const Home = () => {
               <Text mb={1}>{homeData.greeting},</Text>
               <Text fontWeight="bold">{homeData.name},</Text>
               <Box display="flex" gap={10} alignItems="center" mt={3}>
-                <Box boxShadow="lg" borderRadius="full" p="10px" width={58}>
+                <Box
+                  boxShadow="lg"
+                  borderRadius="full"
+                  p="10px"
+                  width={58}
+                  onClick={onOpen}
+                >
                   <Image src={homeData.qrcode} w="100%" />
                 </Box>
                 <Box display="flex" flexDirection="column" w="100%">
@@ -110,6 +116,7 @@ const Home = () => {
           <ChevronRightIcon />
         </Box>
       </Box>
+      <ModalQr isOpen={isOpen} onClose={onClose} qr={homeData.qrcode} />
     </>
   )
 }

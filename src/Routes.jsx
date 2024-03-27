@@ -6,16 +6,16 @@ import AppLayout from "./Layout/AppLayout"
 
 const router = createBrowserRouter([
   {
+    path: "/login",
+    Component: Login,
+  },
+  {
     path: "/",
     Component: AppLayout,
     children: [
       { path: "/", Component: Home },
       { path: "/menu", Component: Menu },
     ],
-  },
-  {
-    path: "/login",
-    Component: Login,
   },
 ])
 

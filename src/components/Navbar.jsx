@@ -9,8 +9,10 @@ import { Link } from "react-router-dom"
 const Navbar = () => {
   const [currentPage, setCurrentPage] = useState("home")
 
-  const togglePage = () => {
-    setCurrentPage((prevPage) => (prevPage === "home" ? "menu" : "home"))
+  const togglePage = (page) => {
+    if (currentPage !== page) {
+      setCurrentPage(page)
+    }
   }
 
   return (
@@ -37,7 +39,7 @@ const Navbar = () => {
           alignItems="center"
           display="flex"
           flexDir="column"
-          onClick={togglePage}
+          onClick={() => togglePage("home")}
           cursor="pointer"
         >
           <Link to={"/"}>
@@ -53,7 +55,7 @@ const Navbar = () => {
           alignItems="center"
           display="flex"
           flexDir="column"
-          onClick={togglePage}
+          onClick={() => togglePage("menu")}
           cursor="pointer"
         >
           <Link to={"/menu"}>

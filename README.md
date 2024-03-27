@@ -1,8 +1,33 @@
-# React + Vite
+# Test TECHNOPARTNER
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Installation
 
-Currently, two official plugins are available:
+To get started with this project, follow these steps:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. Clone this repository to your local machine:
+
+```bash
+git clone https://github.com/DonnuTs94/test-TechnoPartner
+```
+
+2. Navigate to the project directory:
+
+```bash
+cd project-directory
+```
+
+3. Install dependencies using npm or yarn:
+
+```bash
+npm install
+# or
+yarn
+```
+
+After completing the installation steps, you can start the development server by running:
+
+```bash
+npm run dev
+# or
+yarn dev
+```
